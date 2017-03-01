@@ -30,7 +30,7 @@ public class CerrarSesion extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		HttpSession session =  request.getSession(true);
+		HttpSession session =  request.getSession(false);
 		session.invalidate();
 		
 		request.getRequestDispatcher("salida.jsp").forward(request, response);
