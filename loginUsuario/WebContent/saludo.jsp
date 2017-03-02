@@ -5,12 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PÁGINA SALUDO USUARIO</title>
+<script type="text/javascript">
+function incrementarContador()
+{
+	open("CrearSesion", "_self");
+}
+
+</script>
 </head>
 <body>
 <h1>SALUDO</h1>
-HOLA, ${sessionScope.nombre_usuario} <br>
-<button onclick="CrearSesion">NÚMERO DE VECES</button> <br>
-Contador: ${sessionScope.contador_usuario} <br><br>
+HOLA, ${nombre_usuario} <br>
+<button onclick="incrementarContador()">NÚMERO DE VECES</button> <br>
+Contador: ${contador_usuario} <br><br>
 
 <a href="CerrarSesion">LOGOUT</a>
 

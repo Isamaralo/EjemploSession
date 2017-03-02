@@ -32,14 +32,20 @@ public class CrearSesion extends HttpServlet {
 		
 		String nombre_introducido = request.getParameter("nombre");
 		
-		HttpSession session =  request.getSession(true);
+		HttpSession session =  request.getSession(false);
 
-		session.setAttribute("nombre_usuario", nombre_introducido);
-		session.setAttribute("contador_usuario", 0);
+		//session.setAttribute("nombre_usuario", nombre_introducido);
+		//session.setAttribute("contador_usuario", 0);
 		
-		if (null!=session.getAttribute("nombre_usuario"))
+		
+		if (session==null)
 		{
-			session.setAttribute("contador_usuario", (int)session.getAttribute("contador_usuario")+1);
+			session= request.getSession(true);
+			session.setAttribute("nombre_usuario", nombre_introducido);
+			session.setAttribute("contador_usuario", 0);
+		}else{
+			session.setAttribute("nombre_usuario", nombre_introducido);
+			session.setAttribute("contador_usuario", ((Integer)session.getAttribute("contador_usuario"))+1);
 		}
 		
 		request.getRequestDispatcher("saludo.jsp").forward(request, response);
