@@ -31,7 +31,10 @@ public class CerrarSesion extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		HttpSession session =  request.getSession(false);
-		session.invalidate();
+		
+		if(session != null)
+		
+			session.invalidate();
 		
 		request.getRequestDispatcher("salida.jsp").forward(request, response);
 	}
